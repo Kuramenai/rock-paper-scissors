@@ -46,34 +46,41 @@ function playRound(playerSelection,computerSelection){
 
     if(isPlayerChoiceValid(playerSelection)){
         if(playerSelection === computerSelection){
-            return `Wow both are ${computerSelection}.It's a tie.What about another round?`
+            console.log(`Wow both are ${computerSelection}.It's a tie.What about another round?`);
+            return 0;
         }
 
         
         if(playerSelection === 'Rock'){
             if(computerSelection === 'Paper'){
-                return lose_announcement;
+                console.log(lose_announcement);
+                return -1;
             }
             if(computerSelection === 'Scissors'){
-                return win_announcement;
+                console.log(win_announcement);
+                return 1;
             }
         }
 
         if(playerSelection === 'Paper'){
             if(computerSelection === 'Scissors'){
-                return lose_announcement;
+                console.log(lose_announcement);
+                return -1;
             }
             if(computerSelection === 'Rock'){
-                return win_announcement;
+                console.log(win_announcement);
+                return 1;
             }
         }
 
         if(playerSelection === 'Scissors'){
             if(computerSelection === 'Rock'){
-                return lose_announcement;
+                console.log(lose_announcement);
+                return -1;
             }
             if(computerSelection === 'Paper'){
-                return win_announcement;
+                console.log(win_announcement);
+                return 1;
             }
         }
     }
@@ -84,10 +91,29 @@ function playRound(playerSelection,computerSelection){
 
 }
 
+function finalScore(computerWins,playerWins,ties){
+    if(playerWins === computerWins){
+        console.log(`$You won ${playerWins} times and lost ${playerWins} times.There was ${ties} ties.`);
+        console.log("You both are so good that it's impossible to tell which of you is the GOAT.");
+    }
+    else if(computerWins > playerWins){
+        console.log(`$You won ${playerWins} times and lost ${playerWins} times.There was ${ties} ties.`);
+        console.log("CONGRATULATIONS! You have won");
+    }
+    else if(computerWins < playerWins){
+        console.log(`$You won ${playerWins} times and lost ${playerWins} times.There was ${ties} ties.`);
+        console.log("SORRY Bro! You have lost");
+    }
+}
+
+function game(){
+   
+}
+
 
 computerSelection = getComputerChoice();
 computerFormattedSelection = getFormattedComputerChoice(computerSelection);
 
 playerSelection = getPlayerSelection();
 
-console.log(playRound(playerSelection,computerFormattedSelection));
+playRound(playerSelection,computerFormattedSelection);
