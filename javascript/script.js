@@ -91,29 +91,50 @@ function playRound(playerSelection,computerSelection){
 
 }
 
+/*Function to display final score  */
 function finalScore(computerWins,playerWins,ties){
     if(playerWins === computerWins){
-        console.log(`$You won ${playerWins} times and lost ${playerWins} times.There was ${ties} ties.`);
+        console.log(`You won ${playerWins} times and lost ${computerWins} times.There was ${ties} ties.`);
         console.log("You both are so good that it's impossible to tell which of you is the GOAT.");
     }
-    else if(computerWins > playerWins){
-        console.log(`$You won ${playerWins} times and lost ${playerWins} times.There was ${ties} ties.`);
+    else if(computerWins < playerWins){
+        console.log(`You won ${playerWins} times and lost ${computerWins} times.There was ${ties} ties.`);
         console.log("CONGRATULATIONS! You have won");
     }
-    else if(computerWins < playerWins){
-        console.log(`$You won ${playerWins} times and lost ${playerWins} times.There was ${ties} ties.`);
+    else if(computerWins > playerWins){
+        console.log(`You won ${playerWins} times and lost ${computerWins} times.There was ${ties} ties.`);
         console.log("SORRY Bro! You have lost");
     }
 }
 
+/*The game*/
 function game(){
+    playerWins=0;computerWins=0,ties=0;
+   
+    for(let i = 0; i <5; i++){
+        computerSelection = getComputerChoice();
+        computerFormattedSelection = getFormattedComputerChoice(computerSelection);
+
+        playerSelection = getPlayerSelection();
+
+        roundResult = playRound(playerSelection,computerFormattedSelection);
+        
+
+        if(roundResult === 1){
+            playerWins+= 1;
+        }
+        else if(roundResult === -1){
+            computerWins +=1;
+        }
+        else{
+            ties +=1
+        }
+    }
+
+    finalScore(computerWins,playerWins,ties);
    
 }
 
 
-computerSelection = getComputerChoice();
-computerFormattedSelection = getFormattedComputerChoice(computerSelection);
 
-playerSelection = getPlayerSelection();
-
-playRound(playerSelection,computerFormattedSelection);
+game();
