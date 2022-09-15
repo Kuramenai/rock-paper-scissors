@@ -108,32 +108,62 @@ function finalScore(computerWins,playerWins,ties){
 }
 
 /*The game*/
-function game(){
+function game(e){
     playerWins=0;computerWins=0,ties=0;
    
-    for(let i = 0; i <5; i++){
-        computerSelection = getComputerChoice();
-        computerFormattedSelection = getFormattedComputerChoice(computerSelection);
 
-        playerSelection = getPlayerSelection();
+    computerSelection = getComputerChoice();
+    computerFormattedSelection = getFormattedComputerChoice(computerSelection);
 
-        roundResult = playRound(playerSelection,computerFormattedSelection);
-        
+     playerSelection = e.target.className;
 
-        if(roundResult === 1){
-            playerWins+= 1;
-        }
-        else if(roundResult === -1){
-            computerWins +=1;
-        }
-        else{
-            ties +=1
-        }
+    roundResult = playRound(playerSelection,computerFormattedSelection);
+    
+
+    if(roundResult === 1){
+        playerWins+= 1;
     }
+    else if(roundResult === -1){
+        computerWins +=1;
+    }
+    else{
+        ties +=1
+    }
+
 
     finalScore(computerWins,playerWins,ties);
    
 }
+/* Add GUI */
+
+
+
+playerChoiceIsRock = document.querySelector('.Rock');
+playerChoiceIsPaper = document.querySelector('.Paper');
+playerChoiceIsScissors = document.querySelector('.Scissors');
+
+
+playerChoices = [playerChoiceIsRock,playerChoiceIsPaper,playerChoiceIsScissors];
+
+/* add event listener to each item so that every time we click one, we play a round*/
+for(const choice of playerChoices){
+    choice.addEventListener('click',playGame);
+}
+
+function playGame(e){
+   
+    game(e);
+   
+}
+
+let playerSelection = 0, computerSelection = 0;
+
+
+
+
+
+
+
 
 
 
