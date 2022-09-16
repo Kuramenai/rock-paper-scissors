@@ -94,24 +94,22 @@ function playRound(playerSelection,computerSelection){
 /*Function to display final score  */
 function finalScore(computerWins,playerWins,ties){
     if(playerWins === computerWins){
-        console.log(`You won ${playerWins} times and lost ${computerWins} times.There was ${ties} ties.`);
         console.log("You both are so good that it's impossible to tell which of you is the GOAT.");
+        console.log(`You won ${playerWins} times and lost ${computerWins} times.There was ${ties} ties.`);
     }
     else if(computerWins < playerWins){
-        console.log(`You won ${playerWins} times and lost ${computerWins} times.There was ${ties} ties.`);
         console.log("CONGRATULATIONS! You have won");
+        console.log(`You won ${playerWins} times and lost ${computerWins} times.There was ${ties} ties.`);
     }
     else if(computerWins > playerWins){
-        console.log(`You won ${playerWins} times and lost ${computerWins} times.There was ${ties} ties.`);
         console.log("SORRY Bro! You have lost");
+        console.log(`You won ${playerWins} times and lost ${computerWins} times.There was ${ties} ties.`);
     }
 }
 
 /*The game*/
 function game(e){
-    playerWins=0;computerWins=0,ties=0;
-   
-
+    
     computerSelection = getComputerChoice();
     computerFormattedSelection = getFormattedComputerChoice(computerSelection);
 
@@ -119,24 +117,40 @@ function game(e){
 
     roundResult = playRound(playerSelection,computerFormattedSelection);
     
+    playerWinsStats = document.querySelector('.playerWins');
+    computerWinsStats = document.querySelector('.computerWins');
+    tiesStats = document.querySelector('.ties');
+   
 
     if(roundResult === 1){
         playerWins+= 1;
+        playerWinsStats.textContent = `${playerWins}`;
     }
     else if(roundResult === -1){
         computerWins +=1;
+        computerWinsStats.textContent = `${computerWins}`;
     }
     else{
-        ties +=1
+        ties +=1;
+        tiesStats.textContent = `${ties}`
+    }
+    
+    
+    if(playerWins === 5 || computerWins === 5){
+        finalScore(computerWins,playerWins,ties);
+        playerWins = 0;
+        computerWins = 0;
+        ties = 0;
     }
 
 
-    finalScore(computerWins,playerWins,ties);
+    
    
 }
 /* Add GUI */
 
-
+let playerSelection = 0, computerSelection = 0;
+let playerWins=0;computerWins=0,ties=0;
 
 playerChoiceIsRock = document.querySelector('.Rock');
 playerChoiceIsPaper = document.querySelector('.Paper');
@@ -156,7 +170,7 @@ function playGame(e){
    
 }
 
-let playerSelection = 0, computerSelection = 0;
+
 
 
 
