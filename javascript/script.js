@@ -113,10 +113,10 @@ function game(e){
     computerSelection = getComputerChoice();
     computerFormattedSelection = getFormattedComputerChoice(computerSelection);
 
-     playerSelection = e.target.className;
+    playerSelection = e.target.className;
 
     roundResult = playRound(playerSelection,computerFormattedSelection);
-    
+
     playerWinsStats = document.querySelector('.playerWins');
     computerWinsStats = document.querySelector('.computerWins');
     tiesStats = document.querySelector('.ties');
@@ -125,14 +125,21 @@ function game(e){
     if(roundResult === 1){
         playerWins+= 1;
         playerWinsStats.textContent = `${playerWins}`;
+        playerWinsStats.style.color = 'green';
+        resultDisplayText.textContent = `>>  NICE MOVE! ${computerFormattedSelection} could not resist to the power of ${playerSelection}  <<`;        
     }
     else if(roundResult === -1){
         computerWins +=1;
         computerWinsStats.textContent = `${computerWins}`;
+        resultDisplayText.textContent =  `>>  SEEMS LIKE YOU HAVE BEEN TRICKED! Unfortunately ${computerFormattedSelection} beats ${playerSelection}  <<`;
+        resultDisplayText.style.color = "brown";
     }
     else{
         ties +=1;
         tiesStats.textContent = `${ties}`
+        resultDisplayText.textContent = '>>  IT\'S A TIE  <<';
+        resultDisplayText.style.color = "gray";
+
     }
     
     
@@ -147,7 +154,7 @@ function game(e){
     
    
 }
-/* Add GUI */
+/* Add GUI  part */
 
 let playerSelection = 0, computerSelection = 0;
 let playerWins=0;computerWins=0,ties=0;
@@ -158,6 +165,10 @@ playerChoiceIsScissors = document.querySelector('.Scissors');
 
 
 playerChoices = [playerChoiceIsRock,playerChoiceIsPaper,playerChoiceIsScissors];
+
+resultDisplay = document.querySelector('.result-Display')
+resultDisplayText = document.createElement('p');
+resultDisplay.appendChild(resultDisplayText);
 
 /* add event listener to each item so that every time we click one, we play a round*/
 for(const choice of playerChoices){
