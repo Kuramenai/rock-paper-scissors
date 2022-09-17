@@ -4,16 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="./styles/style.css">
     <script src="./javascript/script.js" defer> </script>
 </head>
 <body>
 
     <div class="header">
-        <span style="color:lightgray">Rock</span>
-        <span style="color:lightgreen">Paper</span> 
-        <span style="color:rgb(253, 253, 137)">Scissors</span>
+        <div class="game-name">
+            <span style="color:lightgray">Rock</span>
+            <span style="color:lightgreen">Paper</span> 
+            <span style="color:rgb(253, 253, 137)">Scissors</span>
+        </div>
+
+        <div class="help-button">
+            <img class="help-icon" src="./images/help-icon.png" alt="help icon">            
+        </div>
     </div>
 
     <div class="game-viewport">
@@ -22,11 +28,11 @@
 
         <div class="player-selection-items">
             <div class="item-container">
-                <img class="Rock" src="./images/rock.svg">
+                <img class="Rock" src="./images/rock.svg" alt="rock">
             </div>
 
             <div class="item-container">
-                <img class="Paper" src="./images/paper.svg" alt="money">
+                <img class="Paper" src="./images/paper.svg" alt="paper">
             </div>
 
             <div class="item-container">
@@ -66,8 +72,16 @@
     </div>
 
     <div class="footer">
-        <a href="https://github.com/Kuramenai" target="_blank" class="footer-link"> Kuramenai </a>
-        <div>No Copyright</div>
+        <div>
+            <a href="https://github.com/Kuramenai" target="_blank" class="footer-link"> Kuramenai </a>/
+            No Copyright
+        </div>
+       
+        <div class="credits">
+            Credits: <a target="_blank" href="https://icons8.com/icon/VTNpzJ4RupPJ/help">Help</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>/
+                        Aloevera font by <a target="_blank" href="https://salamahtype.com">@salamahtype</a>/
+                        Images from <a target="_blank" href="https://www.svgrepo.com/">SVG Repo</a>
+        </div>
     </div>
    
 </body>

@@ -125,21 +125,20 @@ function game(e){
     if(roundResult === 1){
         playerWins+= 1;
         playerWinsStats.textContent = `${playerWins}`;
-        playerWinsStats.style.color = 'green';
-        resultDisplayText.textContent = `>>  NICE MOVE! ${computerFormattedSelection} could not resist to the power of ${playerSelection}  <<`;        
+        resultDisplayText.style.color = 'green';
+        resultDisplayText.textContent = `>>  NICE MOVE! ${computerFormattedSelection} could not resist to the mighty power of ${playerSelection}  <<`;        
     }
     else if(roundResult === -1){
         computerWins +=1;
         computerWinsStats.textContent = `${computerWins}`;
-        resultDisplayText.textContent =  `>>  SEEMS LIKE YOU HAVE BEEN TRICKED! Unfortunately ${computerFormattedSelection} beats ${playerSelection}  <<`;
         resultDisplayText.style.color = "brown";
+        resultDisplayText.textContent =  `>>  SEEMS LIKE YOU HAVE BEEN TRICKED! Unfortunately ${computerFormattedSelection} beats ${playerSelection}  <<`;
     }
     else{
         ties +=1;
-        tiesStats.textContent = `${ties}`
-        resultDisplayText.textContent = '>>  IT\'S A TIE  <<';
+        tiesStats.textContent = `${ties}`;
         resultDisplayText.style.color = "gray";
-
+        resultDisplayText.textContent = '>>  IT\'S A TIE  <<';
     }
     
     
@@ -149,8 +148,6 @@ function game(e){
         computerWins = 0;
         ties = 0;
     }
-
-
     
    
 }
@@ -168,6 +165,7 @@ playerChoices = [playerChoiceIsRock,playerChoiceIsPaper,playerChoiceIsScissors];
 
 resultDisplay = document.querySelector('.result-Display')
 resultDisplayText = document.createElement('p');
+//resultDisplayText.classList.add('textAnimation'); To use later on
 resultDisplay.appendChild(resultDisplayText);
 
 /* add event listener to each item so that every time we click one, we play a round*/
