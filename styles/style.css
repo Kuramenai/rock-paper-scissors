@@ -188,6 +188,136 @@ body{
 
 }
 
+/* Modal content start  */
+
+/* First one */
+
+.modal,.modal-result-display{
+
+    position: fixed;
+    z-index: 1;
+
+    top:0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    font-family: 'Roboto',Arial, Helvetica, sans-serif;
+    line-height: 20px;
+
+    background-color: rgba(0,0,0,0.5);
+
+
+}
+
+.modal-result-display{
+    display: none;
+}
+
+
+.modal-content{
+    background-color: rgb(235, 235, 235);
+
+    width: 600px;
+
+    padding: 20px;
+
+    border-radius: 15px;
+
+    box-sizing: border-box;
+
+}
+
+
+.modal-content-title{
+    text-align: center;
+    margin-bottom: 10px;
+    
+    font-weight: bold;
+    font-size: larger;
+}
+
+.play-button-container{
+    text-align: center;
+
+    margin-top: 10px ;
+}
+
+.play-button, .quit-announcement-button{
+
+    padding: 10px 20px;
+
+    background-color: cornflowerblue;
+    color: white;
+
+    border: 1px solid cornflowerblue;
+    
+    border-radius: 3px;
+
+   
+
+    transition: all 0.15s;
+
+    cursor: pointer;
+
+}
+
+.play-button:hover, .quit-announcement-button:hover{
+
+    background-color: white; 
+    color: cornflowerblue;
+}
+
+.play-button:active, .quit-announcement-button:active{
+    padding: 5px 30px;
+}
+
+/* game announcement modal  */
+
+.game-result-container{
+
+    background-color: rgb(235, 235, 235);
+
+    width: 300px;
+    padding: 20px;
+    border-radius: 15px;
+
+    box-sizing: border-box;
+
+    text-align: center;
+
+}
+.game-result-announcement{
+    font-family: 'Aloevera';
+}
+
+.quit-announcement-button-container{
+
+    margin-top: 10px;
+
+}
+
+.modal-content, .game-result-announcement{
+    animation-name:modalopen;
+    animation-duration: 1s;
+}
+
+@keyframes modalopen{
+    from{opacity: 0;}
+    to {opacity:1}
+}
+
+
+
+
+/*  Modal content end  */
+
 .footer{
     display: flex;
     flex-direction: column;

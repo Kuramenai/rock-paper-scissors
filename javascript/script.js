@@ -126,7 +126,7 @@ function game(e){
         playerWins+= 1;
         playerWinsStats.textContent = `${playerWins}`;
         resultDisplayText.style.color = 'green';
-        resultDisplayText.textContent = `>>  NICE MOVE! ${computerFormattedSelection} could not resist to the mighty power of ${playerSelection}  <<`;        
+        resultDisplayText.textContent = `>>  NICE MOVE! ${computerFormattedSelection} could not resist in front of the mighty power of ${playerSelection}  <<`;        
     }
     else if(roundResult === -1){
         computerWins +=1;
@@ -142,11 +142,27 @@ function game(e){
     }
     
     
-    if(playerWins === 5 || computerWins === 5){
+    if(playerWins === 5){
+        gameResultAnnouncement.textContent = 'Yay, You have won. CONGRATULATIONS! '
+        quitAnnouncementButton.textContent = 'Strike again'
+        modalResult.style.display ='flex';
         finalScore(computerWins,playerWins,ties);
         playerWins = 0;
         computerWins = 0;
         ties = 0;
+
+
+    }
+    else if(computerWins === 5){
+
+        gameResultAnnouncement.textContent = 'Sorry Bro/Sis, Seems like you have lost. But I am sure the next round is yours'
+        quitAnnouncementButton.textContent = 'Let\'s try again'
+        modalResult.style.display ='flex';
+        finalScore(computerWins,playerWins,ties);
+        playerWins = 0;
+        computerWins = 0;
+        ties = 0;
+
     }
     
    
@@ -156,14 +172,33 @@ function game(e){
 let playerSelection = 0, computerSelection = 0;
 let playerWins=0;computerWins=0,ties=0;
 
-playerChoiceIsRock = document.querySelector('.Rock');
-playerChoiceIsPaper = document.querySelector('.Paper');
-playerChoiceIsScissors = document.querySelector('.Scissors');
+let playerChoiceIsRock = document.querySelector('.Rock');
+let playerChoiceIsPaper = document.querySelector('.Paper');
+let playerChoiceIsScissors = document.querySelector('.Scissors');
+
+//get help-icon element
+let helpIcon = document.querySelector('.help-icon');
+//get modal element
+let modal = document.querySelector('.modal');
+// get play-button element
+let playBtn = document.querySelector('.play-button');
+
+//get modal element that appears at the end of the game
+let modalResult = document.querySelector('.modal-result-display');
+//get game-result-announcement element
+let gameResultAnnouncement = document.querySelector('.game-result-announcement')
+//get quit-announcement-button element
+let quitAnnouncementButton = document.querySelector('.quit-announcement-button')
+
+// Listen for open click on help icon,play-button and quit-announcement-button
+helpIcon.addEventListener('click',openModal);
+playBtn.addEventListener('click',closeModal);
+quitAnnouncementButton.addEventListener('click',closeAnnouncement)
 
 
 playerChoices = [playerChoiceIsRock,playerChoiceIsPaper,playerChoiceIsScissors];
 
-resultDisplay = document.querySelector('.result-Display')
+let resultDisplay = document.querySelector('.result-Display')
 resultDisplayText = document.createElement('p');
 //resultDisplayText.classList.add('textAnimation'); To use later on
 resultDisplay.appendChild(resultDisplayText);
@@ -177,6 +212,23 @@ function playGame(e){
    
     game(e);
    
+}
+
+function openModal(){
+    modal.style.display = 'flex';
+}
+
+function closeModal(){
+    modal.style.display = 'none';
+}
+
+function closeAnnouncement(){
+    resultDisplayText.textContent = '';
+    playerWinsStats.textContent = `0`;
+    computerWinsStats.textContent = `0`;
+    tiesStats.textContent = `0`;
+
+    modalResult.style.display = 'none'
 }
 
 
